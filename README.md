@@ -1,14 +1,6 @@
-https://drive.google.com/file/d/12lGLaslYanPiUrMC63FQ3_QKaRoJ3_mG/view?usp=sharing
+# Awesome Book milestone 1
 
-> For the final step in completeing Microverse module one capstone project,
-
-# Taas Homes
-
-> Taas Homes is an imaginary real estate company. Taas homes is located in Nairobi Kenya and it deals with house purchese. The imaginary company has variety of options for its customers of depending on their needs and the financial capabibity. Taas homes also partnered with financial institutions to facilitate morgage facilities to its customers.
-
-# Screenshot
-
-> This is the first [interface](https://loltolo-lesapiti.github.io/capstone/)
+> This is a simple plain Javascript project that builds a basic website that allows users to add/remove books from a list. This is achieved by using JavaScript objects and arrays and dynamically DOM modification and use of add basic events.
 
 ## Built with
 
@@ -48,16 +40,17 @@ Track JavaScript linter errors run:
 npx eslint ."
 ```
 
-## Link to the live page
-
-> Feel free to check the [Taas Homes-link](https://loltolo-lesapiti.github.io/capstone/).
-
 ## Authors
 
 👤 **Petro Loltolo Lesapiti**
 
 - GitHub: [@petrolesapiti](https://github.com/Loltolo-Lesapiti)
 - LinkedIn: [@petrolesapiti](https://www.linkedin.com/in/petrolesapitiloltolo/)
+
+👤 **Eva Lavinia Bucur**
+
+- GitHub: [@](https://github.com/)
+- LinkedIn: [@](https://www.linkedin.com//)
 
 ## Collaborators
 
@@ -75,19 +68,6 @@ To get a local copy follow these simple steps:
 
 - Open the command prompt in the created directory.
 
-- On the terminal run this command git clone https://github.com/Loltolo-Lesapiti/capstone.git.
-
 - Go to the repository folder using command prompt cd javascript-capstone.
 
 - Install the dev dependencies for linters run npm install.
-
-## Acknowledgments
-
-- I would like to give Credit to [Cindy Shin](https://www.behance.net/adagio07) the [author of the original design](https://www.behance.net/gallery/29845175/CC-Global-Summit-2015), as required by the [Creative Commons License](https://creativecommons.org/licenses/).
-- Huge appreciation to microverse team for creating such a great curriculmn.
-- To my coding partners and various team members for contributing to my understaing of the content.
-- And finally thanks to my family for the ample time and financial support.
-
-## 📝 License
-
-This project is [MIT](./MIT.md) licensed.
