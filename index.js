@@ -1,42 +1,45 @@
 
 let books=[];
 
-const addBook= (event)=>{
+document.getElementById('add').addEventListener('click', (event)=>{
     event.preventDefault();
     let book={
         Title: document.querySelector("#title").value,
         Author: document.querySelector("#author").value
     }
-    books.push(book);
-    //Local storage
+    if(JSON.parse(localStorage.getItem("books"))){
+        books=JSON.parse(localStorage.getItem("books"));
+    }else{
+        books.push(book);
+     }
     localStorage.setItem('books', JSON.stringify(books));
-    display(book);
+    window.onload=fromLocalStorage();
     document.querySelector("form").reset();
-    //remove();
-  
+})
+// Retrive from local storage and display.
+function fromLocalStorage(){
+        let items=JSON.parse(localStorage.getItem("books"));
+        items.forEach(book => {
+        let elementContainer=document.querySelector(".container");
+        let div=document.createElement("div");
+        elementContainer.appendChild(div);
+        let booktitle= document.createElement("p");
+        booktitle.textContent=book.Title;
+        div.appendChild(booktitle);
+       
+        let bookauthor= document.createElement("p");
+        bookauthor.textContent=book.Author;
+        div.appendChild(bookauthor);
+        
+        let removebtn= document.createElement("button");
+        removebtn.textContent="Remove";
+        removebtn.className="remove"
+        div.appendChild(removebtn);
+        
+    });
 }
 
-//Method to display
-const display=(book)=>{
- let elementContainer=document.querySelector(".container");
- let div=document.createElement("div");
- elementContainer.appendChild(div);
- let booktitle= document.createElement("p");
- booktitle.textContent=book.Title;
- div.appendChild(booktitle);
 
- let bookauthor= document.createElement("p");
- bookauthor.textContent=book.Author;
- div.appendChild(bookauthor);
- 
- let removebtn= document.createElement("button");
- removebtn.textContent="Remove";
- removebtn.className="remove"
- div.appendChild(removebtn);
-
-}
-// localStorage.setItem('books', JSON.stringify(books));
-document.getElementById('add').addEventListener('click', addBook);
 
 // //Removing book.
 let remove=()=>{
