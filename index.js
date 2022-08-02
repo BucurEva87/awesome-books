@@ -19,6 +19,7 @@ document.getElementById('add').addEventListener('click', (event)=>{
 // Retrive from local storage and display.
 function fromLocalStorage(){
         let items=JSON.parse(localStorage.getItem("books"));
+        let counter=0;
         items.forEach(book => {
         let elementContainer=document.querySelector(".container");
         let div=document.createElement("div");
@@ -36,15 +37,15 @@ function fromLocalStorage(){
         removebtn.className="remove"
         div.appendChild(removebtn);
         
+        //Remove
+        removebtn.addEventListener("click",()=>{
+            items=items.filter((item)=>{
+                item.title===document.querySelector("title");
+            })
+            elementContainer.removeChild(div);
+
+        })
+        
     });
 }
 
-
-
-// //Removing book.
-let remove=()=>{
-    document.querySelector("remove").addEventListener("click",()=>{
-        let removeEl= this.parentNode;
-        elementContainer.removeChild(removeEl);
-    })
-}
