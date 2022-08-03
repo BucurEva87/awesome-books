@@ -70,4 +70,4 @@ To get a local copy follow these simple steps:
 
 - Go to the repository folder using command prompt cd javascript-capstone.
 
-- Install the dev dependencies for linters run npm install.
+- Install the dev dependencies for linters run npm to install.
