@@ -19,7 +19,8 @@ class book{
                 <hr>`;
       const removebtn = div.querySelector('.remove');
       removebtn.addEventListener('click', () => {
-        books =books.filter((el) => el.key !== index);
+        // books =books.filter((el) => el.key === index);
+        books.splice(index, 1);
         this.storeData();
         div.remove();
       });
@@ -42,9 +43,9 @@ class book{
     addBook(){
         let mybook=new book(title.value,author.value);      
         books.push(mybook);
-        this.storeData();
         document.querySelector('form').reset();
         this.dynamic();
+        this.storeData();
     }
     execute(){
         document.querySelector('.add').addEventListener('click', (event) => {
@@ -53,27 +54,17 @@ class book{
               this.addBook();
             }
           });
-
-          window.addEventListener('load', () => {
-            const div = document.createElement('div');
-            books.forEach((book, index) => {
-                div.innerHTML = `
-                          <p>${book.title}</p>
-                          <p>${book.author}</p>                                          
-                          <button type="button" id="${index}" class="remove">Remove</button>   
-                          <hr>`;
-                const removebtn = div.querySelector('.remove');
-                removebtn.addEventListener('click', () => {
-                  books = books.filter((el) => el.key !== index);
-                  div.remove();
-                  this.storeData();
-                });
-              });
-              displayContainer.appendChild(div);
-        });
     }
 }
 
 //Creating an instant of a class.
 let book1=new book(title.value,author.value);
 book1.execute();
+
+   //Display onload.
+   function diaplayOnLoad(){
+    window.addEventListener('load', () => {
+      book1.dynamic();
+    });
+  }
+  diaplayOnLoad();
