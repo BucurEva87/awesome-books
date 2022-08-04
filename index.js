@@ -12,7 +12,7 @@ let books = localStorage.getItem('books')
 const populateBooks = () => {
   utils.qs('div', displayContainer)?.remove();
   const div = document.createElement('div');
-  books.forEach((book, index) => {
+  books.forEach((book) => {
     const wrapper = utils.createElement({});
 
     wrapper.appendChild(
@@ -32,7 +32,6 @@ const populateBooks = () => {
     wrapper.appendChild(
       utils.createElement({
         tagName: 'button',
-        id: index,
         type: 'button',
         class: 'remove',
         textContent: 'Remove',
