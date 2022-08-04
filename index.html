@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Petro and Eva</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="./index.js" type="module"></script>
   </head>
   <body>
     <section>
@@ -14,15 +15,14 @@
     </section>
     <section>
       <form action="#">
-        <input class="title" type="text" placeholder="Title" />
+        <input class="title" type="text" placeholder="Title" required />
         <br />
         <br />
-        <input class="author" type="text" placeholder="Author" />
+        <input class="author" type="text" placeholder="Author" required />
         <br />
         <br />
-        <button class="add" type="submit">Add</button>
+        <button class="add" type="submit" data-origin="something">Add</button>
       </form>
     </section>
-    <script src="./index.js" defer></script>
   </body>
 </html>

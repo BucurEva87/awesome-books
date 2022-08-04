@@ -1,70 +1,90 @@
+// const { isClosingBraceToken } = require('eslint-utils');
+import utils from './utils.js';
+
 // create a class of book.
-let title=document.querySelector(".title");
-let author=document.querySelector(".author");
-const displayContainer = document.querySelector('.container');
-let books=[];
-class book{
-    constructor(title, author){
-        this.author=author;
-        this.title=title;
-    }
-    //Display 
-    dynamic(){
-    const div = document.createElement('div');
-    books.forEach((book, index) => {
-      div.innerHTML = `
-                <p>${book.title}</p>
-                <p>${book.author}</p>                                          
-                <button type="button" id="${index}" class="remove">Remove</button>   
-                <hr>`;
-      const removebtn = div.querySelector('.remove');
-      removebtn.addEventListener('click', () => {
-        // books =books.filter((el) => el.key === index);
-        books.splice(index, 1);
-        this.storeData();
-        div.remove();
-      });
-    });
-    displayContainer.appendChild(div);
-    }
+let title = utils.qs('.title');
+let author = utils.qs('.author');
+const displayContainer = utils.qs('.container');
+let books = localStorage.getItem('books')
+  ? JSON.parse(localStorage.getItem('books'))
+  : [];
 
-    //Add to local storage
-    storeData(){
-        localStorage.setItem('books', JSON.stringify(books));
-      };
+const populateBooks = () => {
+  utils.qs('div', displayContainer)?.remove();
+  const div = document.createElement('div');
+  books.forEach((book, index) => {
+    const wrapper = utils.createElement({});
 
-    //Remove from local storage
-    getData(){
-        JSON.parse(localStorage.getItem('books'));
-    }
+    wrapper.appendChild(
+      utils.createElement({
+        tagName: 'p',
+        textContent: book.title,
+        class: 'title',
+      })
+    );
+    wrapper.appendChild(
+      utils.createElement({
+        tagName: 'p',
+        textContent: book.author,
+        title: 'author',
+      })
+    );
+    wrapper.appendChild(
+      utils.createElement({
+        tagName: 'button',
+        id: index,
+        type: 'button',
+        class: 'remove',
+        textContent: 'Remove',
+      })
+    );
+    wrapper.appendChild(utils.createElement({ tagName: 'hr' }));
+    div.appendChild(wrapper);
+  });
+  displayContainer.appendChild(div);
+};
 
-    //Add book to the catalogue. 
+if (books.length) populateBooks();
 
-    addBook(){
-        let mybook=new book(title.value,author.value);      
-        books.push(mybook);
-        document.querySelector('form').reset();
-        this.dynamic();
-        this.storeData();
-    }
-    execute(){
-        document.querySelector('.add').addEventListener('click', (event) => {
-            event.preventDefault();
-            if (title.value !== '' && author.value !== '') {
-              this.addBook();
-            }
-          });
-    }
+displayContainer.addEventListener('click', (e) => {
+  const { target } = e;
+
+  if (!target.classList.contains('remove')) return;
+
+  const title = utils.qs('p.title', target.parentElement).textContent;
+
+  removeData(title);
+  storeData();
+  populateBooks();
+});
+
+class Book {
+  constructor(title, author) {
+    this.author = author;
+    this.title = title;
+  }
 }
 
-//Creating an instant of a class.
-let book1=new book(title.value,author.value);
-book1.execute();
+utils.qs('form').addEventListener('submit', (e) => {
+  const title = utils.qs('.title', e.target);
+  const author = utils.qs('.author', e.target);
 
-   //Display onload.
-   function diaplayOnLoad(){
-    window.addEventListener('load', () => {
-      book1.dynamic();
-    });
-  }
-  diaplayOnLoad();
+  e.preventDefault();
+
+  if (!title.value.trim().length || !author.value.trim().length) return;
+
+  const book = new Book(title.value, author.value);
+  books.push(book);
+  storeData();
+  populateBooks();
+  e.target.reset();
+});
+
+const storeData = () => {
+  localStorage.setItem('books', JSON.stringify(books));
+};
+
+const removeData = (title) => {
+  books.splice([books.findIndex((book) => book.title === title)], 1);
+  books = books.filter((v) => v !== null);
+};
