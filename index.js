@@ -2,8 +2,6 @@
 import utils from './utils.js';
 
 // create a class of book.
-let title = utils.qs('.title');
-let author = utils.qs('.author');
 const displayContainer = utils.qs('.container');
 let books = localStorage.getItem('books')
   ? JSON.parse(localStorage.getItem('books'))
@@ -45,6 +43,15 @@ const populateBooks = () => {
 
 if (books.length) populateBooks();
 
+const storeData = () => {
+  localStorage.setItem('books', JSON.stringify(books));
+};
+
+const removeData = (title) => {
+  books.splice([books.findIndex((book) => book.title === title)], 1);
+  books = books.filter((v) => v !== null);
+};
+
 displayContainer.addEventListener('click', (e) => {
   const { target } = e;
 
@@ -78,12 +85,3 @@ utils.qs('form').addEventListener('submit', (e) => {
   populateBooks();
   e.target.reset();
 });
-
-const storeData = () => {
-  localStorage.setItem('books', JSON.stringify(books));
-};
-
-const removeData = (title) => {
-  books.splice([books.findIndex((book) => book.title === title)], 1);
-  books = books.filter((v) => v !== null);
-};
