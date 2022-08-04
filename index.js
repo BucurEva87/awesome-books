@@ -18,14 +18,14 @@ const populateBooks = () => {
         tagName: 'p',
         textContent: book.title,
         class: 'title',
-      })
+      }),
     );
     wrapper.appendChild(
       utils.createElement({
         tagName: 'p',
         textContent: book.author,
         title: 'author',
-      })
+      }),
     );
     wrapper.appendChild(
       utils.createElement({
@@ -33,7 +33,7 @@ const populateBooks = () => {
         type: 'button',
         class: 'remove',
         textContent: 'Remove',
-      })
+      }),
     );
     wrapper.appendChild(utils.createElement({ tagName: 'hr' }));
     div.appendChild(wrapper);
