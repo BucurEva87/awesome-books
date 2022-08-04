@@ -82,3 +82,13 @@ utils.qs('form').addEventListener('submit', (e) => {
   populateBooks(books.books);
   e.target.reset();
 });
+
+function listSection(){
+  document.querySelector("#booklist").getElementsByClassName.style.display="flex";
+}
+function addNewSection(){
+  document.querySelector("#addBook").getElementsByClassName.style.display="flex";
+}
+function contactSection(){
+  document.querySelector("#contact").getElementsByClassName.style.display="flex";
+}
