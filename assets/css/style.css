@@ -98,3 +98,42 @@ form input {
   border: 0.3rem solid #000;
   padding: 0.3rem 0.6rem;
 }
+header{
+  display: flex;
+  justify-content: space-between;
+  border: 0.25rem solid #000;
+  padding: 1rem;
+  margin-bottom: 5rem;
+}
+header ul{
+  display: flex;
+  list-style: none;
+  gap:2rem;
+}
+header ul li+li{
+  border-left: 0.3rem solid #000;
+  padding: 0 2rem;
+}
+header a{
+  text-decoration: none;
+  color: #000;
+  font-size: 2rem;
+  
+}
+.mainWrapper{
+  display: flex;
+}
+.mainWrapper > *{
+  width: 100vw;
+}
+#booklist{
+  display: block;
+}
+#addBook{
+  display: none;
+}
+#contact{
+  display: none;
+}
+
+
