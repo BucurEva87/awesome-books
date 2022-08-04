@@ -5,24 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Petro and Eva</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./asset/css/style.css" />
+    <script src="./asset/js/index.js" type="module"></script>
   </head>
   <body>
-    <section>
-      <h1>Awesome Books</h1>
-      <div class="container"></div>
-    </section>
-    <section>
-      <form action="#">
-        <input class="title" type="text" placeholder="Title" />
-        <br />
-        <br />
-        <input class="author" type="text" placeholder="Author" />
-        <br />
-        <br />
-        <button class="add" type="submit">Add</button>
-      </form>
-    </section>
-    <script src="./index.js" defer></script>
+    <main>
+      <section>
+        <h1>All awesome books</h1>
+        <div class="container"></div>
+      </section>
+      <div class="bar"></div>
+      <section>
+        <h2>Add a new book</h2>
+        <form action="#">
+          <input class="title" type="text" placeholder="Title" required />
+          <br />
+          <br />
+          <input class="author" type="text" placeholder="Author" required />
+          <br />
+          <br />
+          <button class="add" type="submit">Add</button>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

@@ -1,56 +1,83 @@
-let books = [];
-const title = document.querySelector('.title');
-const author = document.querySelector('.author');
-const displayContainer = document.querySelector('.container');
+import utils from './utils.js';
 
-const storeData = () => {
-  localStorage.setItem('books', JSON.stringify(books));
-};
+class Books {
+  books = localStorage.getItem('books')
+    ? JSON.parse(localStorage.getItem('books'))
+    : [];
 
-const getData = () => JSON.parse(localStorage.getItem('books'));
+  add(book) {
+    this.books.push(book);
+    this.storeData();
+  }
 
-const removeBook = (book) => {
-  localStorage.removeItem(book);
-};
+  remove(title) {
+    this.books.splice(this.findIndexByTitle(title), 1);
+    this.storeData();
+  }
 
-const addBook = (title, author) => {
-  const book = {
-    title,
-    author,
-  };
-  books.push(book);
+  findIndexByTitle(title) {
+    return this.books.findIndex((b) => b.title === title);
+  }
+
+  storeData() {
+    localStorage.setItem('books', JSON.stringify(this.books));
+  }
+}
+
+const populateBooks = (books) => {
+  utils.qs('div', displayContainer)?.remove();
   const div = document.createElement('div');
-  books.forEach((book, index) => {
-    div.innerHTML = `
-              <p>${book.title}</p>
-              <p>${book.author}</p>                                          
-              <button type="button" id="${index}" class="remove">Remove</button>   
-              <hr>`;
-    const removebtn = div.querySelector('.remove');
-    removebtn.addEventListener('click', () => {
-      books = books.filter((el) => el.key !== index);
-      div.remove();
-      storeData();
-      removeBook(book);
-    });
+  books.forEach((book) => {
+    const wrapper = utils.createElement({});
+
+    wrapper.appendChild(
+      utils.createElement({
+        tagName: 'p',
+        textContent: `"${book.title}" by ${book.author}`,
+        class: 'title',
+      })
+    );
+    wrapper.appendChild(
+      utils.createElement({
+        tagName: 'button',
+        type: 'button',
+        class: 'remove',
+        textContent: 'Remove',
+      })
+    );
+    div.appendChild(wrapper);
   });
-  storeData();
   displayContainer.appendChild(div);
 };
 
-document.querySelector('.add').addEventListener('click', (event) => {
-  event.preventDefault();
-  if (title.value !== '' && author.value !== '') {
-    addBook(title.value, author.value);
-    document.querySelector('form').reset();
-  }
+const books = new Books();
+const displayContainer = utils.qs('.container');
+
+if (books.books.length) populateBooks(books.books);
+
+displayContainer.addEventListener('click', (e) => {
+  const { target } = e;
+
+  if (!target.classList.contains('remove')) return;
+
+  const title = utils.qs('p.title', target.parentElement).textContent;
+
+  books.remove(title.match(/^"(.+?)"/)[0].replaceAll('"', ''));
+  populateBooks(books.books);
 });
 
-const display = () => {
-  if (getData()) {
-    getData().forEach((book) => {
-      addBook(book.title, book.author);
-    });
-  }
-};
-display();
+utils.qs('form').addEventListener('submit', (e) => {
+  const title = utils.qs('.title', e.target);
+  const author = utils.qs('.author', e.target);
+
+  e.preventDefault();
+
+  if (!title.value.trim().length || !author.value.trim().length) return;
+
+  books.add({
+    title: title.value,
+    author: author.value,
+  });
+  populateBooks(books.books);
+  e.target.reset();
+});
