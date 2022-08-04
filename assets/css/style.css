@@ -94,10 +94,7 @@ form > * {
 }
 
 form input {
-  padding: 0.3rem 0.6rem;
-}
-
-form input {
   width: 100%;
   border: 0.3rem solid #000;
+  padding: 0.3rem 0.6rem;
 }
