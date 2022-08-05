@@ -131,10 +131,10 @@ header a{
   display: none;
 }
 #addBook{
-  display: none;
+  display: block;
 }
 #contact{
-  display: block;
+  display: none;
 }
 footer{
   width: 100vw;
@@ -145,7 +145,8 @@ footer{
 footer h4{
   font-size: 2rem;
   text-align: left;
- 
 }
-
+.contact ul{
+ align-self: center;
+}
 

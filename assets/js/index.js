@@ -84,11 +84,11 @@ utils.qs('form').addEventListener('submit', (e) => {
 });
 
 function listSection(){
-  document.querySelector("#booklist").getElementsByClassName.style.display="flex";
+  utils.qs("#booklist").style.display="flex";
 }
 function addNewSection(){
-  document.querySelector("#addBook").getElementsByClassName.style.display="flex";
+  utils.qs("#addBook").style.display="flex";
 }
 function contactSection(){
-  document.querySelector("#contact").getElementsByClassName.style.display="flex";
+  utils.qs("#contact").style.display="flex";
 }
