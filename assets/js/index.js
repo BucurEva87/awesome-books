@@ -37,7 +37,7 @@ const populateBooks = (books) => {
         tagName: 'p',
         textContent: `"${book.title}" by ${book.author}`,
         class: 'title',
-      }),
+      })
     );
     wrapper.appendChild(
       utils.createElement({
@@ -45,7 +45,7 @@ const populateBooks = (books) => {
         type: 'button',
         class: 'remove',
         textContent: 'Remove',
-      }),
+      })
     );
     div.appendChild(wrapper);
   });
@@ -64,7 +64,12 @@ displayContainer.addEventListener('click', (e) => {
   const title = utils.qs('p.title', target.parentElement).textContent;
 
   books.remove(title.match(/^"(.+?)"/)[0].replaceAll('"', ''));
-  populateBooks(books.books);
+
+  if (!books.books.length) {
+    utils.qs('#booklist .container > div').remove();
+  } else {
+    populateBooks(books.books);
+  }
 });
 
 utils.qs('form').addEventListener('submit', (e) => {
@@ -81,4 +86,37 @@ utils.qs('form').addEventListener('submit', (e) => {
   });
   populateBooks(books.books);
   e.target.reset();
+
+  utils.qs('header li a').click();
+});
+
+utils.qs('header').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const { target } = e;
+
+  if (target.tagName !== 'A') return;
+
+  const index = Array.prototype.indexOf.call(
+    target.parentNode.parentNode.children,
+    target.parentNode
+  );
+  utils.qsa('.pages section').forEach((e, i) => {
+    if (i === index) {
+      e.classList.remove('hidden');
+      return;
+    }
+
+    e.classList.add('hidden');
+  });
+});
+
+utils.qs('header > p').textContent = new Date().toLocaleTimeString('en-US', {
+  month: 'long',
+  weekday: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
 });
