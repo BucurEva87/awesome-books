@@ -158,7 +158,8 @@ footer h4 {
 .hidden {
   display: none !important;
 }
-.time{
+
+.time {
   text-align: end;
   margin-right: 2rem;
   font-size: 1.5rem;

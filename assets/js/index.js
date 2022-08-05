@@ -105,7 +105,5 @@ utils.qs('header').addEventListener('click', (e) => {
     e.classList.add('hidden');
   });
 });
-var date= new Date();
-document.querySelector(".time").textContent=date;
 
-
+document.querySelector('.time').textContent = new Date();
