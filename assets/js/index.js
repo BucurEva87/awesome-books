@@ -37,7 +37,7 @@ const populateBooks = (books) => {
         tagName: 'p',
         textContent: `"${book.title}" by ${book.author}`,
         class: 'title',
-      })
+      }),
     );
     wrapper.appendChild(
       utils.createElement({
@@ -45,7 +45,7 @@ const populateBooks = (books) => {
         type: 'button',
         class: 'remove',
         textContent: 'Remove',
-      })
+      }),
     );
     div.appendChild(wrapper);
   });
@@ -94,7 +94,7 @@ utils.qs('header').addEventListener('click', (e) => {
 
   const index = Array.prototype.indexOf.call(
     target.parentNode.parentNode.children,
-    target.parentNode
+    target.parentNode,
   );
   utils.qsa('.pages section').forEach((e, i) => {
     if (i === index) {
