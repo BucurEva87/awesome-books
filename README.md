@@ -12,6 +12,10 @@
 - Stylelint
 - ESlint
 
+## Live demo
+
+You can watch [here](https://bucureva87.github.io/awesome-books/) a live demo of our project.
+
 ## Test
 
 To track linter errors locally follow these steps:

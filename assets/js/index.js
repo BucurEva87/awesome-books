@@ -1,5 +1,7 @@
 import utils from './utils.js';
 
+const displayContainer = utils.qs('.container');
+
 class Books {
   books = localStorage.getItem('books')
     ? JSON.parse(localStorage.getItem('books'))
@@ -35,7 +37,7 @@ const populateBooks = (books) => {
         tagName: 'p',
         textContent: `"${book.title}" by ${book.author}`,
         class: 'title',
-      })
+      }),
     );
     wrapper.appendChild(
       utils.createElement({
@@ -43,7 +45,7 @@ const populateBooks = (books) => {
         type: 'button',
         class: 'remove',
         textContent: 'Remove',
-      })
+      }),
     );
     div.appendChild(wrapper);
   });
@@ -51,7 +53,6 @@ const populateBooks = (books) => {
 };
 
 const books = new Books();
-const displayContainer = utils.qs('.container');
 
 if (books.books.length) populateBooks(books.books);
 
