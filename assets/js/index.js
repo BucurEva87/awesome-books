@@ -82,7 +82,7 @@ utils.qs('form').addEventListener('submit', (e) => {
   populateBooks(books.books);
   e.target.reset();
 
-  qs('header li a').click();
+  utils.qs('header li a').click();
 });
 
 utils.qs('header').addEventListener('click', (e) => {
@@ -96,12 +96,7 @@ utils.qs('header').addEventListener('click', (e) => {
     target.parentNode.parentNode.children,
     target.parentNode
   );
-
-  console.log(`Index is ${index}`);
-
   utils.qsa('.pages section').forEach((e, i) => {
-    console.log(`${e.tagName} || ${i}`);
-
     if (i === index) {
       e.classList.remove('hidden');
       return;
