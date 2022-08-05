@@ -16,15 +16,12 @@ html {
   font-size: 10px;
 }
 
-body {
-  margin-top: 10vh;
-}
-
 main {
   font-family: var(--font-patrick);
-  max-width: 102.4rem;
   margin: 0 auto;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main h1,
@@ -123,29 +120,37 @@ header a{
 .pages{
   display: flex;
   flex-direction: column;
+  left: 0;
+  transition: left 1s;
+  overflow: hidden;
+  justify-content: center;
 }
+
+.mainWrapper section {
+  margin: 0 auto;
+  display: inline;
+  float: left;
+  text-align: center;
+}
+
 .mainWrapper > *{
   width: 100vw;
-}
-#booklist{
-  display: none;
-}
-#addBook{
-  display: none;
-}
-#contact{
-  display: block;
 }
 footer{
   width: 100vw;
   border: 0.25rem solid #000;
   height: 4rem;
   margin-top: 2rem;
+  position: absolute;
+  bottom: 2rem;
 }
 footer h4{
   font-size: 2rem;
   text-align: left;
- 
+}
+
+.hidden {
+  display: none !important;
 }
 
 

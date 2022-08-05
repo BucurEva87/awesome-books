@@ -37,7 +37,7 @@ const populateBooks = (books) => {
         tagName: 'p',
         textContent: `"${book.title}" by ${book.author}`,
         class: 'title',
-      }),
+      })
     );
     wrapper.appendChild(
       utils.createElement({
@@ -45,7 +45,7 @@ const populateBooks = (books) => {
         type: 'button',
         class: 'remove',
         textContent: 'Remove',
-      }),
+      })
     );
     div.appendChild(wrapper);
   });
@@ -81,14 +81,32 @@ utils.qs('form').addEventListener('submit', (e) => {
   });
   populateBooks(books.books);
   e.target.reset();
+
+  qs('header li a').click();
 });
 
-function listSection(){
-  document.querySelector("#booklist").getElementsByClassName.style.display="flex";
-}
-function addNewSection(){
-  document.querySelector("#addBook").getElementsByClassName.style.display="flex";
-}
-function contactSection(){
-  document.querySelector("#contact").getElementsByClassName.style.display="flex";
-}
+utils.qs('header').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const { target } = e;
+
+  if (target.tagName !== 'A') return;
+
+  const index = Array.prototype.indexOf.call(
+    target.parentNode.parentNode.children,
+    target.parentNode
+  );
+
+  console.log(`Index is ${index}`);
+
+  utils.qsa('.pages section').forEach((e, i) => {
+    console.log(`${e.tagName} || ${i}`);
+
+    if (i === index) {
+      e.classList.remove('hidden');
+      return;
+    }
+
+    e.classList.add('hidden');
+  });
+});

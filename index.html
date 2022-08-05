@@ -14,43 +14,43 @@
         <header>
           <a href="/" id="logo">Awesome Books</a>
           <ul>
-            <li><a onclick="listSection()" href="/">List</a></li>
-            <li><a onclick="addNewSection()" href="/">Add new</a></li>
-            <li><a onclick="contactSection()" href="/">Contact</a></li>
+            <li><a href="/">List</a></li>
+            <li><a href="/">Add new</a></li>
+            <li><a href="/">Contact</a></li>
           </ul>
         </header>
         <div class="pages">
-        <section id="booklist">
-          <h1>All awesome books</h1>
-          <div class="container"></div>
-          <div class="bar"></div>
-        </section>  
-        <section id="addBook">
-          <h2>Add a new book</h2>
-          <form action="#">
-            <input class="title" type="text" placeholder="Title" required />
-            <br />
-            <br />
-            <input class="author" type="text" placeholder="Author" required />
-            <br />
-            <br />
-            <button class="add" type="submit">Add</button>
-          </form>
-        </section>
-        <section id="contact">
-          <h2>Contact Information</h2>
-          <p>Do you have any question or anything you want to say</p>
-          <ul>
-            <li>Our enmail is: petrolesapiti@gmail.com</li>
-            <li>Our phone number: 000555636600</li>
-            <li>Our address Loudokume 159 city</li>
-          </ul>
-        </section>
-        
+          <section id="booklist">
+            <h1>All awesome books</h1>
+            <div class="container"></div>
+            <div class="bar"></div>
+          </section>
+          <section id="addBook" class="hidden">
+            <h2>Add a new book</h2>
+            <form action="#">
+              <input class="title" type="text" placeholder="Title" required />
+              <br />
+              <br />
+              <input class="author" type="text" placeholder="Author" required />
+              <br />
+              <br />
+              <button class="add" type="submit">Add</button>
+            </form>
+          </section>
+          <section id="contact" class="hidden">
+            <h2>Contact Information</h2>
+            <p>Do you have any question or anything you want to say</p>
+            <ul>
+              <li>Our enmail is: petrolesapiti@gmail.com</li>
+              <li>Our phone number: 000555636600</li>
+              <li>Our address Loudokume 159 city</li>
+            </ul>
+          </section>
+        </div>
+
         <footer>
           <h4>copyright</h4>
         </footer>
-        </div>
       </div>
     </main>
   </body>
